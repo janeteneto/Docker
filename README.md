@@ -56,3 +56,40 @@
 
 10. Run `sudo nano index.html`
 - From this file, you can make changes to the html page on your local host.
+
+### Build image and push to Docker Hub
+
+1. On your local terminal, run `nano index.html` to create this file and add the following code:
+````
+<!DOCTYPE html>
+<html>
+<head>
+<title>Janete's Page</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to Janete's Profile page!</h1>
+````
+- Replace my name for your own
+- This creates an html page with the above details
+
+2. Copy the file to the previous container with the command:
+````
+docker cp index.html 607f81d7b0f3:/usr/share/nginx/html
+````
+
+3. Run `docker run -d -p 90:80 nginx` to have your index file on another container with port 90 using nginx's image.
+- Now if you browse localhost on your browser you should see your profile, and on port 90 you should see nginx's welcome page. 
+
+4. To create and name your image based on a cointainer run `docker commit (cointaner's name) (name image)`
+
+5. Now login to your DockerHub on your terminal with command ``docker login` and enter your credentials
+
+6. Run `docker tag nameofimage username/nameofimage:inserttag`
+- For eg., mine looks like `docker tag janeteprofile janeteneto/janeteprofile:v1`
+
+7.  Finally, to push to Dockerhub, run `docker push janeteneto/janeteprofile:v1`
