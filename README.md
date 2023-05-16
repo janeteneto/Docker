@@ -93,3 +93,46 @@ docker cp index.html 607f81d7b0f3:/usr/share/nginx/html
 - For eg., mine looks like `docker tag janeteprofile janeteneto/janeteprofile:v1`
 
 7.  Finally, to push to Dockerhub, run `docker push janeteneto/janeteprofile:v1`
+
+### Docekrfile
+
+1. On localhost, do `nano Dockerfile`
+
+2. Add the following code:
+````
+FROM nginx
+LABEL MAINTAINER=JANETE
+COPY index.html /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+````
+
+3. Make a small change to the `index.html` file to see if the following steps will be deployed correctly
+
+4. Do `docker ps` and make sure to remove any containers running on port 80. Use the `docker rm (container id) -f` to force the removal
+
+5. Run `docker build -t nginx:v1 .` - this will create an image using the Dcokerfile you just created.
+- The `.` means that it will be created on the present directory
+
+6. Run `docker run -d -p 90:80 janeteprofile/nginx:v1` then check if it reflected on localhosts:90
+
+7. Run `docker tag nginx janeteneto/nginx:v1`
+
+8. `Then push with command janeteneto/nginx:v1`
+
+### Docekrfile 
+On the same directory as app folder (do not cd into app):
+1. Run `nano Dockerfile` and add the following code:
+
+````
+FROM node:16
+LABEL MAINTAINER=JANETE
+WORKDIR /app
+COPY app/ .
+EXPOSE 3000
+RUN npm install
+CMD ["npm", "start"]
+````
+
+2. Run `docker build -t app:v1`
+3. `docker run -d -p 3000:3000 app:v1`
