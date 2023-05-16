@@ -32,9 +32,11 @@
 - Docker is a platform that allows developers to create, deploy, and run applications in containers. 
 - With Docker, developers can build, test, and deploy applications faster and more efficiently, as containers can be easily distributed and scaled. Docker is widely used in modern software development and is an important tool for building cloud-native applications.
 
-###
+### Docker Container
 
-1. `docker run -d -p 80:80 nginx`
+- Once Docker is installed and running, open a Git Bash terminal on any directory:
+
+1. Run `docker run -d -p 80:80 nginx`
 
 2. Go to `http://localhost/` and nginx should be running
 
@@ -53,3 +55,4 @@
 9. Run `sudo apt install nano -y`
 
 10. Run `sudo nano index.html`
+- From this file, you can make changes to the html page on your local host.
