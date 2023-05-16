@@ -31,3 +31,25 @@
 
 - Docker is a platform that allows developers to create, deploy, and run applications in containers. 
 - With Docker, developers can build, test, and deploy applications faster and more efficiently, as containers can be easily distributed and scaled. Docker is widely used in modern software development and is an important tool for building cloud-native applications.
+
+###
+
+1. `docker run -d -p 80:80 nginx`
+
+2. Go to `http://localhost/` and nginx should be running
+
+3. `docker rm (container id) -f` - removes container
+
+4. `docker exec -it 607f81d7b0f3 sh` - executes container in linux subsystem
+
+5. `alias docker="winpty docker"` - uses container in docker alias 
+
+6. Cd into `/usr/share/nginx/html` and run command `pwd` to check if you're in the right file.
+
+7. Run `apt update -y`
+
+8. Run `apt-get install sudo`
+
+9. Run `sudo apt install nano -y`
+
+10. Run `sudo nano index.html`
